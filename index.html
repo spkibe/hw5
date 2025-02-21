@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW5 - IFSC 7310</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        p {
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>HW5 - IFSC 7310 - Due February 20, 2025</h1>
+    <p>Submitted on February 21, 2025 (Note: Late submission requires an email reminder to instructor)</p>
+
+    <h2>JavaScript Tutorial Questions (W3Schools Sandbox #1)</h2>
+    <p>The example referenced is: <code>&lt;p id="demo"&gt;Click the button to see the date.&lt;/p&gt; &lt;button onclick="document.getElementById('demo').innerHTML = Date()"&gt;Click me&lt;/button&gt;</code></p>
+
+    <h3>a. Button HTML Command (Without JavaScript)</h3>
+    <p>The <code>&lt;button&gt;</code> tag creates a clickable button on the page. In its simplest form, like <code>&lt;button&gt;Click me&lt;/button&gt;</code>, it displays "Click me" and waits for user interaction. Alone, it doesn’t perform actions—it needs attributes like <code>onclick</code> to do something.</p>
+
+    <h3>b. Meaning of <code>onclick</code></h3>
+    <p><code>onclick</code> is an HTML event attribute that triggers JavaScript code when the button is clicked. It’s a way to say, "Hey, when someone clicks this, run this code!" In the example, it links the click to the date-displaying action.</p>
+
+    <h3>c. JavaScript Code in <code>onclick</code></h3>
+    <p>The code <code>document.getElementById('demo').innerHTML = Date()</code> does three things: it finds the element with ID "demo" (a paragraph), sets its content (<code>innerHTML</code>) to the result of <code>Date()</code>, which shows the current date and time. Click it, and the paragraph updates!</p>
+
+    <h3>d. What "demo" Refers To</h3>
+    <p>"demo" is the ID of the <code>&lt;p&gt;</code> tag (<code>&lt;p id="demo"&gt;</code>). It’s a unique identifier JavaScript uses to locate and modify that specific paragraph.</p>
+
+    <h3>e. Function <code>getElementById()</code></h3>
+    <p><code>getElementById()</code> is a JavaScript method that finds an HTML element by its ID. Here, <code>document.getElementById('demo')</code> targets the paragraph with ID "demo" so its content can be changed.</p>
+
+    <h3>f. Meaning of <code>innerHTML</code></h3>
+    <p><code>innerHTML</code> is a property that gets or sets the content inside an HTML element. In this case, it updates the text inside <code>&lt;p id="demo"&gt;</code> to the current date when the button is clicked.</p>
+
+    <h3>g. Function <code>Date()</code></h3>
+    <p><code>Date()</code>, when called as a function, returns a string with the current date and time (e.g., "Fri Feb 21 2025 10:15:30 GMT-0600"). It’s a quick way to grab "now" from the system clock.</p>
+
+    <h2>JavaScript "Where To" Lesson</h2>
+    <h3>Placement of Scripts</h3>
+    <p>JavaScript can be placed in <strong>both</strong> the <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> of an HTML page:</p>
+    <ul>
+        <li><strong>Head</strong>: Good for scripts that need to load early, like functions (e.g., <code>&lt;script&gt;function myFunc() {}&lt;/script&gt;</code>).</li>
+        <li><strong>Body</strong>: Ideal for scripts that interact with page elements, often at the end (e.g., after a paragraph is loaded).</li>
+    </ul>
+    <p>It can’t be "neither"—scripts must be in the HTML file or linked externally with <code>&lt;script src="file.js"&gt;</code>.</p>
+
+    <h2>JavaScript "Output" Lesson</h2>
+    <h3>a. Four Output Buttons</h3>
+    <p>Here are four buttons demonstrating different JavaScript output methods:</p>
+
+    <!-- Button 1: innerHTML -->
+    <p id="output1">This will change!</p>
+    <button onclick="document.getElementById('output1').innerHTML = 'Hello, World!'">Update innerHTML</button>
+    <p>(Changes the text above to "Hello, World!")</p>
+
+    <!-- Button 2: document.write() -->
+    <button onclick="document.write('This replaces everything!')">document.write()</button>
+    <p>(Overwrites the entire page with new text—careful, it clears everything!)</p>
+
+    <!-- Button 3: alert() -->
+    <button onclick="alert('This is a pop-up!')">Show Alert</button>
+    <p>(Shows a pop-up message)</p>
+
+    <!-- Button 4: window.print() -->
+    <button onclick="window.print()">Print Page</button>
+    <p>(Opens the browser’s print dialog)</p>
+
+    <h3>b. Console.log() (Skipped)</h3>
+    <p>Per instructions, this question is skipped and will be in the next HW.</p>
+
+    <h2>Process Mapping: Kabaddi Website Concept</h2>
+    <h3>a. Distinctive Feature and How It Works</h3>
+    <p><strong>Website Name</strong>: Kabaddi Central</p>
+    <p><strong>Distinctive Feature</strong>: An interactive "Raid Simulator" where users pick a team and raider, then watch an animated raid outcome based on real player stats.</p>
+    <p><strong>How It Works</strong>: The homepage offers news, kabaddi rules, and a "Simulator" tab. Users (optionally logged in) select a team and player, click "Raid," and see an animation with stats (e.g., success rate). There’s also a forum and live match ticker.</p>
+
+    <h3>b. First DFD (Key Components)</h3>
+    <p>Here’s a textual representation of the Data Flow Diagram (draw this visually on your site):</p>
+    <pre>
+[User] --> (Team/Player Selection) --> [Simulator Engine] --> (Raid Animation) --> [User]
+                        |                        |
+                        v                        v
+[Player Stats DB] <--> (Stats)        [Forum System] <--> (Posts) <--> [User]
+                        |                        |
+                        v                        v
+                        [Forum Posts DB]
+    </pre>
+    <p>- <strong>Simulator Engine</strong>: Runs the raid simulation.<br>- <strong>Forum System</strong>: Manages user posts.<br>- <strong>Data Stores</strong>: Hold stats and forum data.</p>
+
+    <h3>c. Second DFD (Simulator Engine Breakdown)</h3>
+    <p>Breaking down the "Simulator Engine" process:</p>
+    <pre>
+[User] --> (Team/Player Choice) --> [Fetch Stats] --> (Stats) --> [Calculate Outcome]
+                        |                                       |
+                        v                                       v
+[Player Stats DB] <--> (Stats Data)           [Render Animation] --> (Animation) --> [User]
+    </pre>
+    <p>- <strong>Fetch Stats</strong>: Retrieves player data.<br>- <strong>Calculate Outcome</strong>: Determines raid result.<br>- <strong>Render Animation</strong>: Displays the animated raid.</p>
+
+    <h2>Notes</h2>
+    <p>- No sensitive input fields (passwords, etc.) are included, per security instructions.<br>- Add this to your homepage link with a note: "HW5 is ready to be graded."</p>
+</body>
+</html>
